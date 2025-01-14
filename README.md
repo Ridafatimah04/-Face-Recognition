@@ -5,47 +5,94 @@ Face recognition is a biometric technology that identifies or verifies an indivi
 2.Overview of Google Teachable Machine:
 Google Teachable Machine is a web-based platform that democratizes machine learning by allowing users to create, train, and deploy models without requiring coding or advanced technical expertise. It's particularly suited for beginners who want to explore machine learning concepts, including face recognition, in an interactive and accessible manner.
 
-3.Key Features
-Detects faces in images and in real-time too.
-Utilizes a pre-trained model from Google Teachable Machine.
-Beginner-friendly and easy to customize.
+3.Features: Image Classification: Train a model to recognize and classify different face images. User-Friendly Interface: No coding knowledge required to train models. Exportable Models: Models can be exported and used in various applications.
 
-4.Steps to Build a Face Recognition Model The following steps were taken to create a face recognition model:
-Data Collection: Captured multiple images of faces under various conditions to improve accuracy. Categorized images into classes for training (e.g., Person A, Person B).
-![Screenshot_14-1-2025_161025_teachablemachine withgoogle com](https://github.com/user-attachments/assets/fc131e1a-904c-49a1-b513-98d1b7709014)
-Model Training: Imported images into Teachable Machine. Adjusted parameters (e.g., epochs, learning rate) to optimize performance. Trained the model within the platform, receiving real-time feedback on accuracy. 
-![Screenshot_14-1-2025_162124_teachablemachine withgoogle com](https://github.com/user-attachments/assets/8c62bfb3-0666-44f6-a3ae-529049f939b3)
-Testing: Validated the model with unseen face images. Evaluated accuracy, precision, and recall metrics. 
-![image](https://github.com/user-attachments/assets/1fb4d061-c971-4188-9ded-0b270975bcd1)
-Exporting and Deployment: Exported the trained model in TensorFlow.js format. Integrated the model into a Python project using tensorflow or JavaScript for web applications.
-Advantages
-Free and open for everyone.
-No need for advanced hardware or technical expertise.
-Encourages experimentation and creativity in AI.
-Prerequisites
-Python 3.7 or higher
-OpenCV library
-NumPy library
-A pre-trained face model from Google Teachable Machine
+Installation: 1.Visit the Teachable Machine Website: Go to Teachable Machine 
+![image](https://github.com/user-attachments/assets/599d7af4-4ada-4078-9306-65ca39b68e70)
 
-Import Required Libraries python from keras.models import load_model # TensorFlow required for Keras import cv2 # For accessing the webcam and processing images import numpy as np # For numerical operations load_model: Loads a pre-trained deep learning model for prediction. cv2 (OpenCV): Handles webcam input and image display. numpy: Facilitates image preprocessing, such as resizing and normalizing.
+2.Create a New Project: Click on "Get Started" and select "Image Model" under the "New Project" section 3.Select Model Type: Choose the "Standard Image Model" option. 
+![image](https://github.com/user-attachments/assets/d4b13d29-2ef1-47ee-9cb5-72010491e6a3)
 
-Disable Scientific Notation np.set_printoptions(suppress=True) Prevents numpy from displaying numbers in scientific notation, ensuring more readable output.
+4.Collect Training Data: Use your webcam or upload images to provide examples for each class (e.g., different faces). 
+![Screenshot_14-1-2025_161025_teachablemachine withgoogle com](https://github.com/user-attachments/assets/27bed7e6-76ba-4689-88b6-4b9b166e8509)
 
-Load the Pre-trained Model and Labels model = load_model("C:/Users/Drishty/PycharmProjects/PythonProject/face_recogonization/model.h5", compile=False) class_names = open("labels.txt", "r").readlines() Model: A deep learning model trained for face recognition. It predicts the probability of the input belonging to each class. Labels: Contains the class names corresponding to the model’s output. For example, labels.txt might look like: 0 John 1 Mary 2 Alice
+5.Label Examples: Assign labels to each example 
+![Screenshot_14-1-2025_161025_teachablemachine withgoogle com](https://github.com/user-attachments/assets/bb79ccd5-d482-40cd-9240-28e57dc93ad2)
 
-Access the Webcam camera = cv2.VideoCapture(0) Opens the webcam for capturing live video feed. The 0 specifies the default webcam. Change to 1 if using an external camera.
+6.Train the Model: Click on the "Train" button to start training your model. 
+![Screenshot_14-1-2025_162124_teachablemachine withgoogle com](https://github.com/user-attachments/assets/02896345-ef18-45c9-9809-e3da21724aa9)
 
-Main Loop for Real-time Prediction 5.1 Capture and Resize Webcam Image ret, image = camera.read() image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA) cv2.imshow("Webcam Image", image) Captures a single frame (image) from the webcam. Resizes it to 224x224 pixels, matching the model's expected input dimensions. Displays the resized image in a window named "Webcam Image".
+7.Export the Model: Once training is complete, click on "Export the Model" and download the model files (a .zip file containing the model weights (.h5) and labels (.txt) files) 
+![Screenshot_14-1-2025_162546_teachablemachine withgoogle com](https://github.com/user-attachments/assets/64a2277e-c2af-4708-9bc3-329433b8dcfb)
 
-5.2 Preprocess the Image image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3) image = (image / 127.5) - 1 Converts the image into a numpy array and reshapes it to the format (1, 224, 224, 3) (batch size of 1). Normalizes pixel values to the range [-1, 1] for compatibility with the model.
+ #Implementation in Python 1.Set Up Your Environment: Ensure you have Python 3.7 or higher installed. 2.Install Required Libraries: Install OpenCV and NumPy using pip: python ->pip install opencv-python numpy 3.Extract Model Files: Extract the downloaded .h5 and .txt files from the .zip archive and save them in your project directory. 4.Write Python Code: Use the following code to load the model and perform face recognition: from keras.models import load_model # TensorFlow is required for Keras to work import cv2 # Install opencv-python import numpy as np
 
-5.3 Make Predictions prediction = model.predict(image) index = np.argmax(prediction) class_name = class_names[index] confidence_score = prediction[0][index] model.predict: Predicts probabilities for each class. np.argmax: Finds the class with the highest probability. Retrieves the corresponding class name and its confidence score.
+ Disable scientific notation for clarity
+np.set_printoptions(suppress=True)
 
-5.4 Display Results print("Class:", class_name[2:], end="") print("Confidence Score:", str(np.round(confidence_score * 100))[:-2], "%") Prints the recognized class name (skipping the first 2 characters for formatting) and the confidence score as a percentage.
+Load the model
+model = load_model("keras_Model.h5", compile=False)
 
-Keyboard Input for Exit keyboard_input = cv2.waitKey(1) if keyboard_input == 27: # ESC key break Waits for keyboard input. Terminates the loop if the ESC key (ASCII 27) is pressed.
+Load the labels
+class_names = open("labels.txt", "r").readlines()
 
-Release Resources camera.release() cv2.destroyAllWindows() Releases the webcam resource. Closes all OpenCV windows opened during execution.
+CAMERA can be 0 or 1 based on default camera of your computer
+camera = cv2.VideoCapture(0)
 
-Output Example Console Output: yaml Class: John Confidence Score: 98 % Webcam Feed: Displays a real-time video feed, resized for prediction. Key Features Real-time Face Recognition: Continuously captures frames and processes them for predictions. Pre-trained Model Integration: Uses a .h5 model trained for face recognition. Confidence Display: Outputs the name of the recognized person with the associated confidence score. Interactive Exit: Allows termination via the ESC key.
+while True: # Grab the webcamera's image. ret, image = camera.read()
+
+# Resize the raw image into (224-height,224-width) pixels
+image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
+
+# Show the image in a window
+cv2.imshow("Webcam Image", image)
+
+# Make the image a numpy array and reshape it to the models input shape.
+image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3)
+
+# Normalize the image array
+image = (image / 127.5) - 1
+
+# Predicts the model
+prediction = model.predict(image)
+index = np.argmax(prediction)
+class_name = class_names[index]
+confidence_score = prediction[0][index]
+
+# Print prediction and confidence score
+print("Class:", class_name[2:], end="")
+print("Confidence Score:", str(np.round(confidence_score * 100))[:-2], "%")
+
+# Listen to the keyboard for presses.
+keyboard_input = cv2.waitKey(1)
+
+# 27 is the ASCII for the esc key on your keyboard.
+if keyboard_input == 27:
+    break
+camera.release() cv2.destroyAllWindows()
+
+#CODE EXPLANATION IMPORTS from keras.models import load_model: Imports the load_model function from Keras to load the pre-trained model. import cv2: Imports the OpenCV library for computer vision tasks. import numpy as np: Imports the NumPy library for numerical operations.
+
+CONFIGURATION np.set_printoptions(suppress=True): Sets the NumPy print options to suppress scientific notation for clarity when printing.
+
+LOAD MODELS AND LABELS model = load_model("keras_Model.h5", compile=False): Loads the pre-trained model from the file keras_Model.h5 without compiling it. class_names = open("labels.txt", "r").readlines(): Reads the class labels from the file labels.txt into a list.
+
+CAMERA SETUP camera = cv2.VideoCapture(0): Opens the default camera (camera index 0) for capturing images.
+
+MAIN LOOPS while True:: Starts an infinite loop to continuously capture images. ret, image = camera.read(): Captures an image from the camera. image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA): Resizes the image to 224x224 pixels to match the model's input size. cv2.imshow("Webcam Image", image): Displays the captured image in a window titled "Webcam Image".
+
+PREPROCESS IMAGE image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3): Converts the image to a NumPy array and reshapes it to (1, 224, 224, 3) to match the model's input shape. image = (image / 127.5) - 1: Normalizes the image array to a range of [-1, 1]
+
+MAKE PREDICTION prediction = model.predict(image): Uses the model to predict the class of the input image. index = np.argmax(prediction): Finds the index of the class with the highest confidence score. class_name = class_names[index]: Retrieves the class name corresponding to the predicted index. confidence_score = prediction[0][index]: Retrieves the confidence score of the predicted class.
+
+DISPLAY RESULTS print("Class:", class_name[2:], end=""): Prints the predicted class name. print("Confidence Score:", str(np.round(confidence_score * 100))[:-2], "%"): Prints the confidence score as a percentage.
+
+HANDLE KEYBOARD INPUT keyboard_input = cv2.waitKey(1): Waits for keyboard input. if keyboard_input == 27:: Checks if the 'Esc' key (ASCII code 27) is pressed to break the loop.
+
+RELEASE RESOURCE camera.release(): Releases the camera resource. cv2.destroyAllWindows(): Closes all OpenCV windows.
+
+#CONCLUSION Using Google Teachable Machine, you can easily create a face recognition model and implement it in Python. This approach is beginner-friendly and customizable, making it a great starting point for learning about machine learning and computer vision.
+
+
+
+

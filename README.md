@@ -1,8 +1,8 @@
 # -Face-Recognition
-1.INTRODUCTION:
+1.Introduction:
 Face recognition is a biometric technology that identifies or verifies an individual's identity by analyzing and comparing facial features from an image or video. It is widely used across industries for security, authentication, and personalization purposes.Google Teachable Machine is a user-friendly, web-based tool that allows anyone to train machine learning models without coding expertise. It is ideal for beginners exploring face recognition.
 
-2.OVERVIEW OF GOOGLE TEACHABLE MACHINE:
+2.Overview of Google Teachable Machine:
 Google Teachable Machine is a web-based platform that democratizes machine learning by allowing users to create, train, and deploy models without requiring coding or advanced technical expertise. It's particularly suited for beginners who want to explore machine learning concepts, including face recognition, in an interactive and accessible manner.
 
 3.Key Features

@@ -23,7 +23,8 @@ Installation: 1.Visit the Teachable Machine Website: Go to Teachable Machine
 ![Screenshot_14-1-2025_162124_teachablemachine withgoogle com](https://github.com/user-attachments/assets/02896345-ef18-45c9-9809-e3da21724aa9)
 
 7.Export the Model: Once training is complete, click on "Export the Model" and download the model files (a .zip file containing the model weights (.h5) and labels (.txt) files) 
-![Screenshot_14-1-2025_162546_teachablemachine withgoogle com](https://github.com/user-attachments/assets/64a2277e-c2af-4708-9bc3-329433b8dcfb)
+![image](https://github.com/user-attachments/assets/36e358dc-e27e-41eb-919c-e93a448be3a6)
+
 
  #Implementation in Python 1.Set Up Your Environment: Ensure you have Python 3.7 or higher installed. 2.Install Required Libraries: Install OpenCV and NumPy using pip: python ->pip install opencv-python numpy 3.Extract Model Files: Extract the downloaded .h5 and .txt files from the .zip archive and save them in your project directory. 4.Write Python Code: Use the following code to load the model and perform face recognition: from keras.models import load_model # TensorFlow is required for Keras to work import cv2 # Install opencv-python import numpy as np
 

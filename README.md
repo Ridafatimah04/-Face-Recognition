@@ -14,9 +14,7 @@ Beginner-friendly and easy to customize.
 Data Collection: Captured multiple images of faces under various conditions to improve accuracy. Categorized images into classes for training (e.g., Person A, Person B).
 ![Screenshot_14-1-2025_161025_teachablemachine withgoogle com](https://github.com/user-attachments/assets/fc131e1a-904c-49a1-b513-98d1b7709014)
 Model Training: Imported images into Teachable Machine. Adjusted parameters (e.g., epochs, learning rate) to optimize performance. Trained the model within the platform, receiving real-time feedback on accuracy. 
-![Screenshot_14-1-2025_161025_teachablemachine withgoogle com](https://github.com/user-attachments/assets/05726663-25ec-4bc5-999f-c828d5bba080)
-
-
+![Screenshot_14-1-2025_162124_teachablemachine withgoogle com](https://github.com/user-attachments/assets/8c62bfb3-0666-44f6-a3ae-529049f939b3)
 Testing: Validated the model with unseen face images. Evaluated accuracy, precision, and recall metrics. 
-
+![image](https://github.com/user-attachments/assets/67310445-d9ec-4317-8626-9d58932cc5a9)
 Exporting and Deployment: Exported the trained model in TensorFlow.js format. Integrated the model into a Python project using tensorflow or JavaScript for web applications.

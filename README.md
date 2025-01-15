@@ -8,18 +8,23 @@ Google Teachable Machine is a web-based platform that democratizes machine learn
 3.Features: Image Classification: Train a model to recognize and classify different face images. User-Friendly Interface: No coding knowledge required to train models. Exportable Models: Models can be exported and used in various applications.
 
 Installation: 1.Visit the Teachable Machine Website: Go to Teachable Machine 
+
 ![image](https://github.com/user-attachments/assets/599d7af4-4ada-4078-9306-65ca39b68e70)
 
 2.Create a New Project: Click on "Get Started" and select "Image Model" under the "New Project" section 3.Select Model Type: Choose the "Standard Image Model" option. 
+
 ![image](https://github.com/user-attachments/assets/d4b13d29-2ef1-47ee-9cb5-72010491e6a3)
 
 4.Collect Training Data: Use your webcam or upload images to provide examples for each class (e.g., different faces). 
+
 ![Screenshot_14-1-2025_161025_teachablemachine withgoogle com](https://github.com/user-attachments/assets/27bed7e6-76ba-4689-88b6-4b9b166e8509)
 
 5.Label Examples: Assign labels to each example 
+
 ![Screenshot_14-1-2025_161025_teachablemachine withgoogle com](https://github.com/user-attachments/assets/bb79ccd5-d482-40cd-9240-28e57dc93ad2)
 
 6.Train the Model: Click on the "Train" button to start training your model. 
+
 ![Screenshot_14-1-2025_162124_teachablemachine withgoogle com](https://github.com/user-attachments/assets/02896345-ef18-45c9-9809-e3da21724aa9)
 
 7.Export the Model: Once training is complete, click on "Export the Model" and download the model files (a .zip file containing the model weights (.h5) and labels (.txt) files) 
@@ -91,6 +96,8 @@ DISPLAY RESULTS print("Class:", class_name[2:], end=""): Prints the predicted cl
 HANDLE KEYBOARD INPUT keyboard_input = cv2.waitKey(1): Waits for keyboard input. if keyboard_input == 27:: Checks if the 'Esc' key (ASCII code 27) is pressed to break the loop.
 
 RELEASE RESOURCE camera.release(): Releases the camera resource. cv2.destroyAllWindows(): Closes all OpenCV windows.
+
+<img width="610" alt="image" src="https://github.com/user-attachments/assets/d8c1a5c8-e58e-4b89-be27-50f625386bb4" />
 
 #CONCLUSION Using Google Teachable Machine, you can easily create a face recognition model and implement it in Python. This approach is beginner-friendly and customizable, making it a great starting point for learning about machine learning and computer vision.
 
